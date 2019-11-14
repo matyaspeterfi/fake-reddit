@@ -1,7 +1,8 @@
 'use strict';
 
 require('dotenv').config();
-let {conn, PORT, app, jsonParser} = require('./config');
+let {conn, PORT, app, jsonParser, express} = require('./config');
+
 
 conn.connect((err) => {
   if (err) {
@@ -12,8 +13,15 @@ conn.connect((err) => {
 });
 
 //---server---//
+app.use(express.static('../'));
+
 app.listen(PORT, () => {
   console.log(`Now listening on port ${PORT}`);
+})
+
+app.get('/', (req, res) => {
+  res.status(200);
+  res.sendfile('../index.html');
 })
 
 app.get('/hello', (req, res) => {
@@ -42,7 +50,6 @@ app.post('/posts', jsonParser, (req, res) => {
   res.set('Content-Type', 'application/json');
   let postTitle = conn.escape(req.body.title);
   let postURL = conn.escape(req.body.url);
-  console.log(postTitle)
 
   conn.query(`INSERT INTO posts(title, url, timestamp) 
   VALUES (${postTitle}, ${postURL}, NOW());`, function (err, rows) {
