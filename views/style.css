@@ -1,0 +1,87 @@
+.bigCont{
+  display: flex;
+  flex-flow: column;
+}
+
+.headerCont{
+  width: 100%;
+  height: 200px;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.headerPic{
+  z-index: -1;
+  width: 100%;
+  height: 200px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0 auto;
+  /* could've just used background-image on parent element instead */
+}
+
+.subName{
+  color: white;
+}
+
+.snoo{
+  height: 50px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.content{
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 10px;
+}
+
+.sideBar{
+  background-color: blue;
+  padding: 5px;
+
+}
+
+.postsCont{
+  background-color: green;
+  display: grid;
+  grid-template-rows: repeat(10, 1fr);
+  grid-template-columns: 1fr;
+  gap: 10px;
+  padding: 5px;
+}
+
+.post{
+  background-color: yellow;
+  display: flex;
+  flex-flow: row;
+}
+
+.postTextCont{
+  display: flex;
+  flex-flow: column;
+}
+
+.postTitle{
+margin: 0 0 10px 0;
+}
+
+.postLinks{
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+}
+
+.voteCont{
+  background-color: blue;
+  width: 30px;
+  height: 80px;
+  display: flex;
+  flex-flow:column;
+  align-items: center;
+}
+
