@@ -3,6 +3,18 @@
 let upvoteAsset = 'assets/upvote.png'
 let downVoteAsset = 'assets/downvote.png'
 
+let calcTimeAgo = (postTimeStamp) => {
+  
+  let elapsedTime = 0;
+  let currentTimeSec = new Date;
+  currentTimeSec = Math.floor(currentTimeSec.getTime()/1000);
+
+  elapsedTime = Math.floor((currentTimeSec - postTimeStamp))
+
+  return elapsedTime;
+
+}
+
 function renderPost(postData) {
 
   let postsCont = document.querySelector('.postsCont');
@@ -17,9 +29,7 @@ function renderPost(postData) {
   let timeStamp = postList[i].timestamp;
   let scoreData = postList[i].score;
 
-  let createElements = () => {
-    
-  }
+  console.log(timeStamp);
 
   let post = document.createElement('div');
   post.setAttribute('class', 'post');
@@ -31,6 +41,7 @@ function renderPost(postData) {
   let upVote = document.createElement('img');
   upVote.setAttribute('class', 'upVote');
   upVote.setAttribute('src', `${upvoteAsset}`);
+  upVote.setAttribute('id', `${postId}`);
   voteCont.appendChild(upVote);
 
   let score = document.createElement('p');
@@ -41,6 +52,7 @@ function renderPost(postData) {
   let downVote = document.createElement('img');
   downVote.setAttribute('class', 'downVote');
   downVote.setAttribute('src', `${downVoteAsset}`);
+  upVote.setAttribute('id', `${postId}`);
   voteCont.appendChild(downVote);
 
   let postText = document.createElement('div');
@@ -60,7 +72,7 @@ function renderPost(postData) {
   
   let submittedOn = document.createElement('p');
   submittedOn.setAttribute('class', 'timestamp');
-  submittedOn.innerText = `Submitted on ${timeStamp}`;
+  submittedOn.innerText = `Submitted ${calcTimeAgo(timeStamp)} seconds ago.`;
   postText.appendChild(submittedOn);
 
   let postLinks = document.createElement('div');

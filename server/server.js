@@ -50,10 +50,11 @@ app.post('/posts', jsonParser, (req, res) => {
   res.set('Content-Type', 'application/json');
   let postTitle = conn.escape(req.body.title);
   let postURL = conn.escape(req.body.url);
+//task for later: validate incoming url to make sure it starts with 'http://'
+
 
   conn.query(`INSERT INTO posts(title, url, timestamp) 
-  VALUES (${postTitle}, ${postURL}, NOW());`, function (err, rows) {
-    //escape postTitle and postURL to avoid SQL injection and other funky shit
+  VALUES (${postTitle}, ${postURL}, UNIX_TIMESTAMP());`, function (err, rows) {
     if (err) {
       console.log(err.toString());
     }else{

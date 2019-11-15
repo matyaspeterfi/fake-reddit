@@ -4,20 +4,10 @@ import { getPosts } from './controllers/calls.js';
 
 getPosts();
 
-// let firstPost = document.querySelector('.post');
-// let postsCont = document.querySelector('.postsCont');
-// let newPost = firstPost.cloneNode('deep');
+let date = new Date;
 
-// postsCont.appendChild(newPost);
+date = date.getTime();
 
-// let score = newPost.childNodes[1].childNodes[3].innerText;
-// let titleText = newPost.childNodes[3].childNodes[1].innerText;
-// let title = newPost.childNodes[3].childNodes[1];
-// let postUrl = newPost.childNodes[3].childNodes[1].innerText;
+console.log(date);
 
-// title.setAttribute('href', 'https://www.reddit.com')
-
-
-
-// console.log(postUrl);
 
