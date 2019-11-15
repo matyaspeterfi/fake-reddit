@@ -99,5 +99,8 @@ typings/
 node_modules
 
 .DS_Store
+<<<<<<< HEAD
 
 *.code-workspace
+=======
+>>>>>>> 4dae6af3f1cc6bf6899a7e642915819b412e66c7
