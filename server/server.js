@@ -50,18 +50,19 @@ app.post('/posts', jsonParser, (req, res) => {
   res.set('Content-Type', 'application/json');
   let postTitle = conn.escape(req.body.title);
   let postURL = conn.escape(req.body.url);
+  let owner = conn.escape(req.body.owner);
 //task for later: validate incoming url to make sure it starts with 'http://'
 
 
-  conn.query(`INSERT INTO posts(title, url, timestamp) 
-  VALUES (${postTitle}, ${postURL}, UNIX_TIMESTAMP());`, function (err, rows) {
+  conn.query(`INSERT INTO posts(title, url, timestamp, owner) 
+  VALUES (${postTitle}, ${postURL}, UNIX_TIMESTAMP(),${owner});`, function (err, rows) {
     if (err) {
       console.log(err.toString());
     }else{
     console.log('Post added to DB');
     }
   })
-  conn.query(`SELECT post_id, title, url, timestamp, score 
+  conn.query(`SELECT post_id, title, url, timestamp, score, owner 
   FROM posts 
   ORDER BY post_id 
   DESC LIMIT 1;`, function (err, rows2) {

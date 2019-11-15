@@ -1,6 +1,6 @@
 'use strict';
 
-import { renderPost } from '../services/render.js'
+import { renderPost } from '../services/renderPosts.js'
 
 function getPosts() {
   fetch('http://localhost:8080/posts')

@@ -1,19 +1,9 @@
 'use strict';
 
+import { calcTimeAgo } from './calcTimeAgo.js';
+
 let upvoteAsset = 'assets/upvote.png'
 let downVoteAsset = 'assets/downvote.png'
-
-let calcTimeAgo = (postTimeStamp) => {
-  
-  let elapsedTime = 0;
-  let currentTimeSec = new Date;
-  currentTimeSec = Math.floor(currentTimeSec.getTime()/1000);
-
-  elapsedTime = Math.floor((currentTimeSec - postTimeStamp))
-
-  return elapsedTime;
-
-}
 
 function renderPost(postData) {
 
@@ -28,8 +18,7 @@ function renderPost(postData) {
   let url = postList[i].url;
   let timeStamp = postList[i].timestamp;
   let scoreData = postList[i].score;
-
-  console.log(timeStamp);
+  let owner = postList[i].owner;
 
   let post = document.createElement('div');
   post.setAttribute('class', 'post');
@@ -72,7 +61,7 @@ function renderPost(postData) {
   
   let submittedOn = document.createElement('p');
   submittedOn.setAttribute('class', 'timestamp');
-  submittedOn.innerText = `Submitted ${calcTimeAgo(timeStamp)} seconds ago.`;
+  submittedOn.innerText = `Submitted ${calcTimeAgo(timeStamp)} seconds ago by ${owner}`;
   postText.appendChild(submittedOn);
 
   let postLinks = document.createElement('div');
@@ -92,7 +81,6 @@ function renderPost(postData) {
   postLinks.appendChild(actionRemove);
 
   postsCont.appendChild(post);
-
   }
 }
 
