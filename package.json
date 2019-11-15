@@ -1,17 +1,26 @@
 {
-  "name": "reddit-backed-project",
+  "name": "fake-reddit",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Fake reddit including front and backend",
+  "main": "app.js",
   "scripts": {
+    "start": "cd server && nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matyaspeterfi/fake-reddit.git"
+  },
+  "author": "Mat Peterfi",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matyaspeterfi/fake-reddit/issues"
+  },
+  "homepage": "https://github.com/matyaspeterfi/fake-reddit#readme",
   "dependencies": {
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "mysql": "^2.17.1"
+    "mysql": "^2.17.1",
+    "requirejs": "^2.3.6"
   }
 }

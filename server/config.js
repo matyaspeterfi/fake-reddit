@@ -17,4 +17,4 @@ let bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 const jsonParser = bodyParser.json();
 
-module.exports = { conn, PORT, app, jsonParser };
+module.exports = { conn, PORT, app, jsonParser, express };
