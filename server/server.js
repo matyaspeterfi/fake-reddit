@@ -24,6 +24,11 @@ app.get('/', (req, res) => {
   res.sendfile('../index.html');
 })
 
+app.get('/newPost', (req, res) => {
+  res.status(200);
+  res.sendfile('../views/newpost.html')
+})
+
 app.get('/hello', (req, res) => {
   res.status(200);
   res.send('Hello World');

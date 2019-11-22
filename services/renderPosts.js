@@ -1,6 +1,7 @@
 'use strict';
 
 import { calcTimeAgo } from './calcTimeAgo.js';
+import { upDownVote } from '../controllers/upDownVote.js';
 
 let upvoteAsset = 'assets/upvote.png'
 let downVoteAsset = 'assets/downvote.png'
@@ -9,7 +10,7 @@ function renderPost(postData) {
 
   let postsCont = document.querySelector('.postsCont');
   let postList = postData.posts
-  console.log(postList);
+  // console.log(postList);
 
   for(let i = 0; i < postList.length; i++){
   
@@ -28,32 +29,32 @@ function renderPost(postData) {
   post.appendChild(voteCont);
 
   let upVote = document.createElement('img');
-  upVote.setAttribute('class', 'upVote');
+  upVote.setAttribute('class', `upVote ${postId}`);
   upVote.setAttribute('src', `${upvoteAsset}`);
-  upVote.setAttribute('id', `${postId}`);
   voteCont.appendChild(upVote);
 
   let score = document.createElement('p');
   score.setAttribute('class', 'score');
+  score.setAttribute('id', `${postId}`);
   score.innerText = `${scoreData}`;
   voteCont.appendChild(score);
 
   let downVote = document.createElement('img');
-  downVote.setAttribute('class', 'downVote');
+  downVote.setAttribute('class', `downVote`);
   downVote.setAttribute('src', `${downVoteAsset}`);
-  upVote.setAttribute('id', `${postId}`);
+  downVote.setAttribute('onclick', `upDownVote('downvote', ${postId})`);
   voteCont.appendChild(downVote);
-
+  
   let postText = document.createElement('div');
   postText.setAttribute('class', 'postText');
   post.appendChild(postText);
-
+  
   let postTitle = document.createElement('a');
   postTitle.setAttribute('class', 'postTitle');
   postTitle.setAttribute('href', `${url}`);
   postTitle.innerText = title;
   postText.appendChild(postTitle);
-
+  
   let postUrl = document.createElement('a');
   postUrl.setAttribute('class', 'postUrl');
   postUrl.innerText = url;
@@ -61,27 +62,27 @@ function renderPost(postData) {
   
   let submittedOn = document.createElement('p');
   submittedOn.setAttribute('class', 'timestamp');
-  submittedOn.innerText = `Submitted ${calcTimeAgo(timeStamp)} seconds ago by ${owner}`;
+  submittedOn.innerText = `Submitted ${calcTimeAgo(timeStamp)} minutes ago by ${owner}`;
   postText.appendChild(submittedOn);
-
+  
   let postLinks = document.createElement('div');
   postLinks.setAttribute('class', 'postLinks');
   postText.appendChild(postLinks);
-
+  
   let actionModify = document.createElement('a');
   actionModify.setAttribute('class', 'action modify');
   actionModify.innerText = 'Modify';
   // actionModify.setAttribute('href', 'TBC');
   postLinks.appendChild(actionModify);
-
+  
   let actionRemove = document.createElement('a');
   actionRemove.setAttribute('class', 'action remove');
   actionRemove.innerText = 'Remove';
   // actionRemove.setAttribute('href', 'TBC');
   postLinks.appendChild(actionRemove);
-
+  
   postsCont.appendChild(post);
-  }
+}
 }
 
 export { renderPost };

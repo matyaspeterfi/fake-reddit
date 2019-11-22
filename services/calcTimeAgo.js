@@ -6,7 +6,7 @@ let calcTimeAgo = (postTimeStamp) => {
   let currentTimeSec = new Date;
   currentTimeSec = Math.floor(currentTimeSec.getTime()/1000);
 
-  elapsedTime = Math.floor((currentTimeSec - postTimeStamp))
+  elapsedTime = Math.floor((currentTimeSec - postTimeStamp)/60)
 
   return elapsedTime;
 }
